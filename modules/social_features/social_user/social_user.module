@@ -242,7 +242,6 @@ function social_user_register_validate(&$form, FormStateInterface $form_state) {
   $mail_exists = user_load_by_mail($input['mail']);
   $name_exists = user_load_by_name($input['name']);
 
-
   // Check if mail or username already exist.
   if ($mail_exists || $name_exists) {
     // If either the username or mail already exists in the DB, we clear ALL
@@ -333,7 +332,7 @@ function _social_user_pass_reset_submit($form, FormStateInterface $form_state) {
   $storage = $form_state->getValues();
   $submitted_user_id = isset($storage['uid']) ? $storage['uid'] : '';
 
-  // Only when there is actual user, and the actual user is changing his own
+  // Only when there is actual user, and the actual user is changing its own
   // account we redirect. When you're editing others you don't want this.
   if (!empty($submitted_user_id) && \Drupal::currentUser()->id() == $submitted_user_id) {
     $first_time_login = $form_state->get('first_time_login');
